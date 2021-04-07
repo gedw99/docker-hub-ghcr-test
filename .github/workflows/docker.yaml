@@ -36,8 +36,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           tags: |
-            brenekh/encodarr:${{ env.BRANCH_USED }}
-            ghcr.io/brenekh/encodarr:${{ env.BRANCH_USED }}
+            brenekh/docker-hub-ghcr-test:${{ env.BRANCH_USED }}
+            ghcr.io/brenekh/docker-hub-ghcr-test:${{ env.BRANCH_USED }}
 
   deploy-docker-images-to-latest:
     runs-on: ubuntu-latest
@@ -72,7 +72,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           tags: |
-            brenekh/encodarr:latest
-            brenekh/encodarr:${{ env.TAG_USED }}
-            ghcr.io/brenekh/encodarr:latest
-            ghcr.io/brenekh/encodarr:${{ env.TAG_USED }}
+            brenekh/docker-hub-ghcr-test:latest
+            brenekh/docker-hub-ghcr-test:${{ env.TAG_USED }}
+            ghcr.io/brenekh/docker-hub-ghcr-test:latest
+            ghcr.io/brenekh/docker-hub-ghcr-test:${{ env.TAG_USED }}
