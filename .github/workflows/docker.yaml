@@ -88,7 +88,7 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v2
         with:
           flavor: |
-            latest=auto
+            latest=true
             prefix=test-
           images: |
             brenekh/docker-hub-ghcr-test
