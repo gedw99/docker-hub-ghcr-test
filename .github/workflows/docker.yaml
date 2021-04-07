@@ -103,7 +103,7 @@ jobs:
             type=semver,pattern=test-{{version}}
             type=semver,pattern=test-{{major}}.{{minor}}
             type=semver,pattern=test-{{major}}
-            type=raw,value=test-latest,enable=${{ env.PREREL == false && startsWith(github.ref, 'refs/tags/') }},priority=900
+            type=raw,value=test-latest,enable=${{ env.PREREL == 'false' && startsWith(github.ref, 'refs/tags/') }},priority=900
 
       - name: Output Docker Metadata
         run: |
@@ -111,7 +111,11 @@ jobs:
           echo "${{ steps.meta.outputs.tags }}"
           echo "Labels:"
           echo "${{ steps.meta.outputs.labels }}"
+
           echo "Environ:"
-          echo "PREREL: ${{ env.PREREL }};   " && echo "PREREL_CHECK: ${{ env.PREREL == false }};   " && echo "TAG_REF: ${{ startsWith(github.ref, 'refs/tags/') }};"
+          echo "PREREL: ${{ env.PREREL }};"
+          echo "PREREL_CHECK: ${{ env.PREREL == 'false' }};"
+          echo "PREREL_CHECK_2: ${{ !env.PREREL }};"
+          echo "TAG_REF: ${{ startsWith(github.ref, 'refs/tags/') }};"
           echo "${{ !env.PREREL && startsWith(github.ref, 'refs/tags/') }}"
-          echo "${{ env.PREREL == false && startsWith(github.ref, 'refs/tags/') }}"
+          echo "${{ env.PREREL == 'false' && startsWith(github.ref, 'refs/tags/') }}"
