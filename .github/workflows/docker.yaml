@@ -88,11 +88,11 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v2
         with:
           flavor: |
-            latest=false
+            latest=auto
             prefix=test-
           images: |
             brenekh/docker-hub-ghcr-test
-            ghcr.io/brenekh/docker-hub-ghcr
+            ghcr.io/brenekh/docker-hub-ghcr-test
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}}
