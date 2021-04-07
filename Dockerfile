@@ -1,8 +1,8 @@
 # Build stage
 FROM golang:1.16-buster AS builder
 
-ARG TARGETOS=linux
-ARG TARGETARCH=amd64
+ARG TARGETOS
+ARG TARGETARCH
 
 WORKDIR /go/src/docker-hub-ghcr-test
 
