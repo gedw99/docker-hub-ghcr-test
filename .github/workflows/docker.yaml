@@ -117,7 +117,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace }}.build-artifacts/*
+          file: ${{ github.workspace }}/build-artifacts/*
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
