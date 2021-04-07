@@ -83,12 +83,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Set PREREL environment variable
+        env:
+          TAG: ${{ github.ref }}
+        run: echo "PREREL=$(if [[ $TAG =~ "alpha" ]] || [[ $TAG =~ "beta" ]] || [[ $TAG =~ "rc" ]]; then echo "true"; else echo "false"; fi;)" >> $GITHUB_ENV
+
       - name: Generate Docker Metadata
         id: meta
         uses: crazy-max/ghaction-docker-meta@v2
         with:
           flavor: |
-            latest=true
+            latest=false
             prefix=test-
           images: |
             brenekh/docker-hub-ghcr-test
@@ -98,6 +103,7 @@ jobs:
             type=semver,pattern=test-{{version}}
             type=semver,pattern=test-{{major}}.{{minor}}
             type=semver,pattern=test-{{major}}
+            type=raw,value=test-latest,enable=${{ !env.PREREL && startsWith(github.ref, 'refs/tags/') }}
 
       - name: Output Docker Metadata
         run: echo "Tags:" && echo "${{ steps.meta.outputs.tags }}" && echo "Labels:" && echo "${{ steps.meta.outputs.labels }}"
