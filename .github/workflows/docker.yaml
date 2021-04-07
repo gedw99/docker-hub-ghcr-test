@@ -87,6 +87,9 @@ jobs:
         id: meta
         uses: crazy-max/ghaction-docker-meta@v2
         with:
+          flavors: |
+            latest=false
+            prefix=test
           images: |
             brenekh/docker-hub-ghcr-test
             ghcr.io/brenekh/docker-hub-ghcr
@@ -95,7 +98,6 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=sha
 
       - name: Output Docker Metadata
         run: echo "Tags:" && echo "${{ steps.meta.outputs.tags }}" && echo "Labels:" && echo "${{ steps.meta.outputs.labels }}"
