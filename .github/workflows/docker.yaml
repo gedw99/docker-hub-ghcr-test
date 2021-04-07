@@ -120,3 +120,4 @@ jobs:
           file: build-artifacts/*
           tag: ${{ github.ref }}
           overwrite: true
+          file_glob: true
