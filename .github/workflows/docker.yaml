@@ -17,21 +17,15 @@ jobs:
       - name: Generate Docker Metadata
         id: meta
         uses: crazy-max/ghaction-docker-meta@v2
-        env:
-          PREFIX: test-
         with:
-          flavor: |
-            latest=false
-            prefix=${{ env.PREFIX }}
           images: |
             brenekh/docker-hub-ghcr-test
             ghcr.io/brenekh/docker-hub-ghcr-test
           tags: |
             type=ref,event=branch
-            type=semver,pattern=${{ env.PREFIX }}{{version}}
-            type=semver,pattern=${{ env.PREFIX }}{{major}}.{{minor}}
-            type=semver,pattern=${{ env.PREFIX }}{{major}}
-            type=raw,value=latest,enable=${{ env.PREREL == 'false' && startsWith(github.ref, 'refs/tags/') }},priority=900
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
