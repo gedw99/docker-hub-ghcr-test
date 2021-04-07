@@ -34,4 +34,5 @@ jobs:
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
           tags: brenekh/docker-hub-ghcr-test:latest,brenekh/docker-hub-ghcr-test:${{ env.TAG_USED }},ghcr.io/brenekh/docker-hub-ghcr-test:latest,ghcr.io/brenekh/docker-hub-ghcr-test:${{ env.TAG_USED }}
