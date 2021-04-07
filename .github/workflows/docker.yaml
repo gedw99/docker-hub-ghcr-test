@@ -98,4 +98,4 @@ jobs:
             type=sha
 
       - name: Output Docker Metadata
-        run: echo "Tags:" && echo ${{ steps.meta.outputs.tags }} && echo "Labels:" && echo ${{ steps.meta.outputs.labels }}
+        run: echo "Tags:" && echo "${{ steps.meta.outputs.tags }}" && echo "Labels:" && echo "${{ steps.meta.outputs.labels }}"
