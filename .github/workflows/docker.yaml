@@ -87,7 +87,7 @@ jobs:
         id: meta
         uses: crazy-max/ghaction-docker-meta@v2
         with:
-          flavors: |
+          flavor: |
             latest=false
             prefix=test
           images: |
