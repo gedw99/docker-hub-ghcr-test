@@ -89,7 +89,7 @@ jobs:
         with:
           flavor: |
             latest=false
-            prefix=test
+            prefix=test-
           images: |
             brenekh/docker-hub-ghcr-test
             ghcr.io/brenekh/docker-hub-ghcr
