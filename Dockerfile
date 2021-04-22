@@ -12,9 +12,13 @@ RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o go-exec .
 
 
 # Run stage
-FROM scratch
+FROM ubuntu:20.04
 
 WORKDIR /usr/src/app
+
+RUN chmod 777 /usr/src/app \
+ && apt-get update -qq \
+ && DEBIAN_FRONTEND="noninteractive" apt-get install -qq -y tzdata ffmpeg mediainfo
 
 COPY --from=builder /go/src/docker-hub-ghcr-test/go-exec ./go-exec
 
