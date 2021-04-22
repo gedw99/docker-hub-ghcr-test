@@ -20,7 +20,7 @@ RUN chmod 777 /usr/src/app
 
 RUN apt-get update -qq
 
-RUN DEBIAN_FRONTEND="noninteractive" apt-get install -qq -y ffmpeg
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -qq -y mediainfo
 
 COPY --from=builder /go/src/docker-hub-ghcr-test/go-exec ./go-exec
 
