@@ -16,9 +16,9 @@ FROM ubuntu:20.04
 
 WORKDIR /usr/src/app
 
-RUN chmod 777 /usr/src/app \
- && apt-get update -qq \
- && DEBIAN_FRONTEND="noninteractive" apt-get install -qq -y tzdata ffmpeg mediainfo
+RUN chmod 777 /usr/src/app
+RUN apt-get update -qq
+RUN DEBIAN_FRONTEND="noninteractive" apt-get install -qq -y tzdata ffmpeg mediainfo
 
 COPY --from=builder /go/src/docker-hub-ghcr-test/go-exec ./go-exec
 
