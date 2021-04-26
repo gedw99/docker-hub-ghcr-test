@@ -65,8 +65,8 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v2
         with:
           images: |
-            brenekh/docker-hub-ghcr-test
-            ghcr.io/brenekh/docker-hub-ghcr-test
+            gedw99/docker-hub-ghcr-test
+            ghcr.io/gedw99/docker-hub-ghcr-test
           tags: |
             type=ref,event=branch
             type=ref,event=pr
